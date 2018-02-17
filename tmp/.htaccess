@@ -1,0 +1,6 @@
+
+
+
+# Error Pages
+ErrorDocument 403 ../errors/403.php/
+ErrorDocument 404 customers/vh-7924/web/home/www.vertenyi.szakdoga.net/errors/404.php/

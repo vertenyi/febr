@@ -1,0 +1,44 @@
+zászló
+
+more courses
+
+román kurzus
+Sibiu - románia
+
+
+
+mb_substr
+
+
+project tábla:
+id
+projectnév
+
+contents:
+id 
+Project Id
+parent  // 0 a fő szám
+article id
+
+order
+
+project
+parent
+order
+
+
+format
+starting page
+margin type (1 simple, 0 mirrored)
+margin top
+margin bottom
+margin inside
+margin outside
+p
+h1
+h2
+h3
+h4
+h5
+h6
+inset

@@ -1,0 +1,140 @@
+body {
+    counter-reset: page;
+    counter-reset: oldal;
+	counter-reset: chapter;
+    counter-reset: para;
+    counter-reset: subpara;
+}
+
+section{
+	display: block;
+	background-color: white;
+	box-sizing: border-box;
+	border: 0;
+	margin: 0 auto;	
+	box-shadow: 1px 1px 3px 1px #223;
+			padding: 25mm;
+	margin-bottom: 0.5cm;	
+	width: 21cm;
+	*width: 21cm;
+	*height: 29.7cm; 
+	word-wrap: break-word;
+	font-size: 12pt; line-height: 1.5em;
+	overflow: hidden;
+	text-overflow: string;
+	page-break-after: always;
+	font-family: TimesNewRoman, "Times New Roman", Times, Baskerville, Georgia, serif;
+	font-weight: 400;
+	line-height: 1.5em;	
+} 
+section div,
+section p,
+section a,
+section b,
+section u,
+section i,
+section h1,
+section h2,
+section h3,
+section h4,
+section h5,
+section h6,
+section li,
+section pre,
+section span,
+section blockquote
+{
+	font-family: TimesNewRoman, "Times New Roman", Times, Baskerville, Georgia, serif;
+	font-weight: 400;
+	line-height: 1.5em;
+	font-style: normal;
+	font-variant: normal;
+	margin: 0;
+	padding: 0;
+	text-shadow: none;
+	-webkit-font-smoothing: antialiased; 
+    -webkit-text-stroke: 0px #000000;
+    -webkit-text-fill-color: #000000;
+	text-decoration: none;
+	font-style: normal;
+}	
+section b{ font-size: inherit; font-weight: 600;}
+section u{ font-size: inherit; text-decoration: underline;}
+section i{ font-size: inherit; font-style: italic;}
+section a{}
+section h1{ font-size: 24pt; text-align: center; font-weight: 600;}
+section h2{	font-size: 20pt; font-weight: 500; margin: 1em 0;}
+section h3{	font-size: 16pt; font-weight: 600; margin: .5em 0;}
+section h4{ font-size: 14pt; font-weight: 500;}
+section p{	font-size: 12pt;}
+section h5{ font-size: 10pt;}
+section h6{ font-size: 8pt; font-weight: 500;}
+section li{ font-size: 12pt;}
+
+
+section h2::before,section h3::before,section h4::before{
+	display: inline-block;
+	font-weight: 500;
+	margin-right: .5em;
+	*padding-left: .2em;
+	*background-color: #eee;
+	*border-radius: 0 .8em 0 0;
+}
+
+section h2{	counter-reset: para; counter-increment: chapter;}
+section h2::before{	 content: counter(chapter) '. fejezet: ';}
+section h3{	counter-reset: subpara; counter-increment: para;}
+section h3::before{	content: counter(chapter) '.' counter(para) '. ';}
+section h4{	counter-increment: subpara;}
+section h4::before{	content: counter(chapter) '.' counter(para) '.' counter(subpara) '. ';}
+
+    
+    
+
+@media print {
+@page  { 
+	size: A4 portrait; 
+ 	width: 21cm;
+	height: 29.7cm; 
+
+	margin: 15mm 25mm;
+	padding: 2em 0;
+
+}
+
+@page :first { margin: 35mm;}
+@page :left {  margin-right: 35mm;}
+@page :right {  margin-left: 35mm;}
+
+		
+	#toprint, #totop, nav, aside, header, footer, #debug{
+	  display: none;
+	}
+	h1,h2 {page-break-before: always;}
+	h2, h3, h4 { page-break-after: avoid;}
+	p {*page-break-inside: avoid;}
+	a {	font-weight: bolder; text-decoration: none;	}
+	img {   max-width: 100% !important;	page-break-inside: avoid;	}  
+	
+	*, html, body, main {
+		margin: 0;
+		box-shadow: none;
+		border: none;
+		background: none;
+	}
+	section {
+		margin: 0 auto;
+		box-shadow: none;
+		border: none;
+		background: none;
+		padding: 0;
+		display:table-cell;
+
+	}
+
+	main{
+		display:table;
+	}
+}
+#fejlec{position: fixed; top: 0;}
+#fejlec::after{content: counter(chapter);}

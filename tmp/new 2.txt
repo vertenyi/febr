@@ -1,0 +1,65 @@
+abstract class
+
+interface
+cross/multiple inheritence
+
+casztolni más osztályba
+ősobjektumban tárolás
+
+
+
+lehet szótár tömb
+
+$szotar[$lang]['adott szó/kifejezés'];
+
+
+
+
+if tab keydown
+return false
+
+
+online algoritmusok
+___________________________________________
+
+I use a slight evolution of @hugo_leonardo 's solution:
+
+<?php
+
+return (object) array(
+    'host' => 'localhost',
+    'username' => 'root',
+    'pass' => 'password',
+    'database' => 'db'
+);
+
+?>
+This allows you to use the object syntax when you include the php : $configs->host instead of $configs['host'].
+
+Also, if your app has configs you need on the client side (like for an Angular app), you can have this  config.php file contain all your configs (centralized in one file instead of one for JavaScript and one for PHP). The trick would then be to have another PHP file that would echo only the client side info (to avoid showing info you don't want to show like database connection string). Call it say get_app_info.php :
+
+<?php
+
+    $configs = include('config.php');
+    echo json_encode($configs->app_info);
+
+?>
+The above assuming your config.php contains an app_info parameter:
+
+<?php
+
+return (object) array(
+    'host' => 'localhost',
+    'username' => 'root',
+    'pass' => 'password',
+    'database' => 'db',
+    'app_info' => array(
+        'appName'=>"App Name",
+        'appURL'=> "http://yourURL/#/"
+    )
+);
+
+?>
+So your database's info stays on the server side, but your app info is accessible from your JavaScript, with for example a $http.get('get_app_info.php').then(...); type of call.
+
+

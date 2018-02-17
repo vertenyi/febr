@@ -1,0 +1,6 @@
+
+
+
+# Error Pages
+ErrorDocument 403 /febr/errors/403.php
+ErrorDocument 404 /febr/errors/404.php
